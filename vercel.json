@@ -1,0 +1,7 @@
+{
+  "framework": "nextjs",
+  "functions": {
+    "app/api/payments/webhook/route.ts": { "maxDuration": 10 },
+    "app/api/telegram/webhook/route.ts": { "maxDuration": 10 }
+  }
+}

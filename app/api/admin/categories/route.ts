@@ -1,0 +1,2 @@
+import {NextResponse} from 'next/server';import {dbQuery} from '@/lib/db';import {requireAdmin} from '@/lib/auth/guards';
+export async function GET(){try{await requireAdmin();const r=await dbQuery(`SELECT id,slug,name_hi,name_en,sort_order,is_active FROM scripture_categories WHERE is_active=true ORDER BY sort_order`);return NextResponse.json({items:r.rows})}catch{return NextResponse.json({error:'Unauthorized'},{status:401})}}
