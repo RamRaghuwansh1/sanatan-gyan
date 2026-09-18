@@ -2,7 +2,7 @@
 import {useEffect,useState} from 'react';
 export default function TelegramAdmin(){
  const [d,setD]=useState<any>(null),[text,setText]=useState('Sanatan Gyan Telegram admin test message'),[key,setKey]=useState('announcement_enabled'),[value,setValue]=useState('false'),[msg,setMsg]=useState('');
- const load=()=>fetch('/api/admin/telegram').then(r=>r.json()).then(setD);useEffect(load,[]);
+ const load=async()=>{const r=await fetch('/api/admin/telegram');setD(await r.json())};useEffect(()=>{void load()},[]);
  async function post(body:any){const r=await fetch('/api/admin/telegram',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const j=await r.json();setMsg(r.ok?'Saved.':j.error||'Action failed');if(r.ok)load()}
  async function test(){setMsg('Sending…');const r=await fetch('/api/admin/telegram',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'test_message',text})});const j=await r.json();setMsg(r.ok?'Test message processed for configured admin IDs.':j.error||'Failed')}
  return <section><div className="adminHeader"><div><p className="eyebrow">Telegram Control</p><h1>Telegram Admin</h1><p className="muted">Bot operations stay webhook-based; AANU remains isolated on its separate server.</p></div><span className="status">{d?.configured?'Bot configured':'Bot token missing'}</span></div>
