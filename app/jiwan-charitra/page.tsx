@@ -1,2 +1,0 @@
-import Link from "next/link";
-export default function Page(){return <main className="page"><header className="topbar"><Link href="/">ॐ Sanatan Gyan</Link><nav><Link href="/granth">Granth</Link><Link href="/about">About</Link></nav></header><section className="hero centered"><div className="om">ॐ</div><p className="eyebrow">जीवन चरित्र</p><h1>Jiwan Charitra</h1><p>महापुरुषों और संतों के जीवन-चरित्र के लिए dedicated section.</p><div className="badge">Coming Soon</div></section></main>}

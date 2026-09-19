@@ -1,2 +1,0 @@
-import {NextResponse} from 'next/server';import {dbQuery} from '@/lib/db';import {requireUser} from '@/lib/auth/guards';
-export async function GET(){try{const u=await requireUser();const r=await dbQuery(`SELECT e.id,e.status,s.id scripture_id,s.slug,s.title_hi,s.title_en,s.status AS publication_status,e.granted_at FROM entitlements e JOIN scriptures s ON s.id=e.scripture_id WHERE e.user_id=$1 AND e.status='ACTIVE' ORDER BY e.granted_at DESC`,[u.id]);return NextResponse.json({items:r.rows})}catch{return NextResponse.json({error:'Unauthorized'},{status:401})}}
