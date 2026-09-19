@@ -1,0 +1,2 @@
+import { catalog } from "@/lib/catalog";
+export default function Page(){return <section><div className="adminHeader"><div><p className="eyebrow">Content CMS</p><h1>Scriptures</h1></div><button disabled>+ Add Granth</button></div><div className="table"><div className="tr head"><span>Granth</span><span>Category</span><span>Status</span></div>{catalog.map(c=><div className="tr" key={c.slug}><span><strong>{c.nameHi}</strong><small>{c.nameEn}</small></span><span>{c.category}</span><span>{c.status}</span></div>)}</div></section>}
